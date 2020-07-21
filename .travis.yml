@@ -1,18 +1,19 @@
-dist: trusty
+language: shell
+dist: bionic
+services: docker
 
-jobs:
-  include:
-    - stage: build docker images
-      script:
-        - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-        - make build PHP=7.3
-        - make build PHP=7.4
-        - docker tag dkimg/phpqa:7.4 dkimg/phpqa:latest
-        - docker push dkimg/phpqa:7.3
-        - docker push dkimg/phpqa:7.4
-        - docker push dkimg/phpqa:latest
-    - stage: test
-      script:
-        - docker images
-        - docker run --rm dkimg/phpqa:7.3 php -v
-        - docker run --rm dkimg/phpqa:7.4 php -v
+script:
+  - make build PHP=7.4
+  - make build PHP=7.3
+
+after_script:
+  - docker images
+  - docker run --rm dkimg/phpqa:7.3 php -v
+  - docker run --rm dkimg/phpqa:7.4 php -v
+
+after_success:
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker tag dkimg/phpqa:7.4 dkimg/phpqa:latest
+  - docker push dkimg/phpqa:7.3
+  - docker push dkimg/phpqa:7.4
+  - docker push dkimg/phpqa:latest
