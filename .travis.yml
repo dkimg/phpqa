@@ -1,22 +1,25 @@
-language: shell
+os: linux
 dist: bionic
+language: shell
 services: docker
 
 jobs:
   include:
+    # build and push images
     - stage: "build"
-      name: "php 7.3.x"
       script:
-        - make build PHP=7.3
-        - make push PHP=7.3
-    - script:
-      - make build PHP=7.4
-      - docker tag dkimg/phpqa:7.4 dkimg/phpqa:latest
-      - make push PHP=7.4
-      - make push PHP=latest
+      - make PHP=7.4
+      - make latest PHP=7.4
       name: "php 7.4.x"
-    - stage: "test"
+    - script: make PHP=7.3
       name: "php 7.3.x"
-      script: make test PHP=7.3
-    - script: make test PHP=7.4
+    - script: make PHP=7.2
+      name: "php 7.2.x"
+    # pull and test images
+    - stage: "test"
+      script: make test PHP=7.4
       name: "php 7.4.x"
+    - script: make test PHP=7.3
+      name: "php 7.3.x"
+    - script: make test PHP=7.2
+      name: "php 7.2.x"
