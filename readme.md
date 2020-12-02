@@ -6,8 +6,9 @@ PHP images with basic extensions and QA tools based on [php-cli-alpine](https://
 
 | php | image/tag | size |
 |:-----:|:-----:|:-----:|
-| `7.4.11` | dkimg/phpqa:7.4 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/dkimg/phpqa/7.4?label=image) |
-| `7.3.23` | dkimg/phpqa:7.3 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/dkimg/phpqa/7.3?label=image) |
+| `8.0.0` | dkimg/phpqa:8.0 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/dkimg/phpqa/8.0?label=image) |
+| `7.4.13` | dkimg/phpqa:7.4 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/dkimg/phpqa/7.4?label=image) |
+| `7.3.25` | dkimg/phpqa:7.3 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/dkimg/phpqa/7.3?label=image) |
 | `7.2.34` | dkimg/phpqa:7.2 | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/dkimg/phpqa/7.2?label=image) |
 
 QA tools included:
