@@ -8,8 +8,10 @@ jobs:
     # build and push images
     - stage: "build"
       script:
-      - make PHP=7.4
-      - make latest PHP=7.4
+      - make PHP=8.0
+      - make latest PHP=8.0
+      name: "php 8.0.x"
+    - script: make PHP=7.4
       name: "php 7.4.x"
     - script: make PHP=7.3
       name: "php 7.3.x"
@@ -17,7 +19,9 @@ jobs:
       name: "php 7.2.x"
     # pull and test images
     - stage: "test"
-      script: make test PHP=7.4
+      script: make test PHP=8.0
+      name: "php 8.0.x"
+    - script: make test PHP=7.4
       name: "php 7.4.x"
     - script: make test PHP=7.3
       name: "php 7.3.x"
