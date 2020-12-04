@@ -29,6 +29,7 @@ Loaded extensions:
 - mysqli
 - bcmath
 - mbstring
+- intl
 
 All images comes with:
 - [composer](https://getcomposer.org/)
