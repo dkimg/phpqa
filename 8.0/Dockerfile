@@ -8,6 +8,7 @@ RUN set -ex \
         libpng \
         libjpeg-turbo \
         php7-phpdbg \
+        icu \
     && apk add -q --no-cache --virtual \
         .build-deps \
         postgresql-dev \
@@ -31,6 +32,7 @@ RUN set -ex \
         mysqli \
         mbstring \
         bcmath \
+        intl \
         > /dev/null \
     && pecl -q install pcov \
     && docker-php-ext-enable pcov \
