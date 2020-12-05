@@ -1,5 +1,7 @@
 FROM php:7.2-cli-alpine
 
+ENV PATH="$PATH:/root/.composer/vendor/bin"
+
 RUN set -ex \
     && apk add -q --update --no-cache \
         libpq \
@@ -42,4 +44,9 @@ RUN set -ex \
     && wget -q https://get.sensiolabs.org/security-checker.phar -O /usr/bin/security-checker \
     && chmod +x /usr/bin/security-checker \
     && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
+    && composer global require phpunit/phpunit \
+    && composer global require squizlabs/php_codesniffer \
+    && composer global require phpmd/phpmd \
+    && composer global require phpstan/phpstan \
+    && composer clearcache \
     && apk del -q --no-cache .build-deps
